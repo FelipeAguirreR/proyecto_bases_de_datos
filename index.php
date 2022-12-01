@@ -2,72 +2,109 @@
 
 <body>
   <h1 align="center">ChechoWiwi </h1>
-  <p style="text-align:center;">Aquí puedes buscar toda la informacion sobre los eventos.</p>
+  <br>
+  <div class='container'>
+    <br>
 
+    <h4 align="center"> Aqui puedes ver la información de todas las productoras</h4>
+
+    <form align="center" action="consultas/consulta_info_productoras.php" method="post">
+      <input type="submit" value="ver">
+    </form>
+    
+    <br>
+    <br>
+    <br>
+  </div>
   <br>
 
-  <h3 align="center"> Aqui puedes ver la información de todas las productoras</h3>
+  <div class='container'>
+    <h4 align="center"> Aqui puedes ver la cantidad de eventos realizados por cada productora</h4>
 
-  <form align="center" action="consultas/consulta_info_productoras.php" method="post">
-    <input type="submit" value="Buscar">
-  </form>
+    <form align="center" action="consultas/consulta_eventos_productoras.php" method="post">
+
+      <input type="submit" value="ver">
+    </form>
+    
+    <br>
+    <br>
+    <br>
+  </div>
+  <br>
   
+
+  <div class='container'>
+    <h4 align="center"> ¿Quieres saber el ultimo evento realizado por una productora?</h4>
+
+    <form align="center" action="consultas/consulta_ultimo_evento.php" method="post">
+      Nombre productora:
+      <input type="text" name="productora">
+      <br/><br/>
+      <input type="submit" value="Buscar">
+    </form>
+    
+    <br>
+    <br>
+    <br>
+  </div>
   <br>
-  <br>
+  <div class='container'>
+    <h4 align="center">¿Quieres saber todos los artistas que han trabajado con una productora?</h4>
+
+
+    <form align="center" action="consultas/consulta_productora_artistas.php" method="post">
+      Nombre productora:
+      <input type="text" name="productora">
+      <br/><br/>
+      <input type="submit" value="Buscar">
+    </form>
+    <br>
+    <br>
+    <br>
+  </div>
   <br>
 
-  <h3 align="center"> ¿Quieres buscar un Pokemón por su ID?</h3>
+  <div class='container'>
+    <h4 align="center">¿Quieres saber el total de ingresos por entradas de un evento?</h4>
 
-  <form align="center" action="consultas/consulta_stats.php" method="post">
-    Id:
-    <input type="text" name="id_elegido">
-    <br/><br/>
-    <input type="submit" value="Buscar">
-  </form>
-  
-  <br>
-  <br>
-  <br>
 
-  <h3 align="center"> ¿Quieres conocer los Pokemones más altos que: ?</h3>
-
-  <form align="center" action="consultas/consulta_altura.php" method="post">
-    Altura Mínima:
-    <input type="text" name="altura">
-    <br/><br/>
-    <input type="submit" value="Buscar">
-  </form>
-  <br>
-  <br>
+    <form align="center" action="consultas/consulta_ingresos_evento.php" method="post">
+      Nombre evento:
+      <input type="text" name="evento">
+      <br/><br/>
+      <input type="submit" value="Buscar">
+    </form>
+    <br>
+    <br>
+    <br>
+  </div>
   <br>
 
-  <h3 align="center">¿Quieres buscar todos los pokemones por tipo?</h3>
+  <div class='container'>
+    <h4 align="center"> Aqui puedes ver la cantidad de Artistas que se presentaran en cada evento</h4>
 
-  <?php
-  #Primero obtenemos todos los tipos de pokemones
-  require("config/conexion.php");
-  $result = $db -> prepare("SELECT DISTINCT tipo FROM pokemones;");
-  $result -> execute();
-  $dataCollected = $result -> fetchAll();
-  ?>
+    <form align="center" action="consultas/consulta_eventos_artistas.php" method="post">
 
-  <form align="center" action="consultas/consulta_tipo.php" method="post">
-    Seleccinar un tipo:
-    <select name="tipo">
-      <?php
-      #Para cada tipo agregamos el tag <option value=value_of_param> visible_value </option>
-      foreach ($dataCollected as $d) {
-        echo "<option value=$d[0]>$d[0]</option>";
-      }
-      ?>
-    </select>
-    <br><br>
-    <input type="submit" value="Buscar por tipo">
-  </form>
+      <input type="submit" value="ver">
+    </form>
+    <br>
+    <br>
+    <br>
+  </div>
+  <br>
 
-  <br>
-  <br>
-  <br>
+
+  <div class='container'>
+    <h4 align="center"> Evento con mayor cantidad de entradas vendidas:</h4>
+
+    <form align="center" action="consultas/consulta_evento_venta_mayor.php" method="post">
+
+      <input type="submit" value="ver">
+    </form>
+    <br>
+    <br>
+    <br>
+  </div>
   <br>
 </body>
 </html>

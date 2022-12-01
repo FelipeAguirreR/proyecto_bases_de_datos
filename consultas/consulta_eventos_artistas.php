@@ -1,13 +1,13 @@
 <?php include('../templates/header.html');   ?>
 
 <body>
-<h2 align="center">Productoras </h2>
+<h2 align="center">Cantidad de Artistas por Evento </h2>
 
 <?php
   #Llama a conexión, crea el objeto PDO y obtiene la variable $db
   require("../config/conexion.php");
 
- 	$query = "SELECT nombre, telefono FROM Productoras";
+ 	$query = "SELECT E.nombre as nombre_eventos, COUNT(AE.id_a) as cantidad_artistas FROM ArtistaEvento as AE, Evento as E WHERE E.id_ev = AE.id_ev GROUP BY E.nombre;";
 	$result = $db -> prepare($query);
 	$result -> execute();
 	$productoras = $result -> fetchAll();
@@ -15,8 +15,8 @@
 
 	<table align="center">
     <tr>
-      <th>Nombre</th>
-      <th>Telefono</th>
+      <th>Nombre Evento</th>
+      <th>total de Artistas</th>
     </tr>
   <?php
 	foreach ($productoras as $productora) {
